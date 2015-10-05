@@ -1,0 +1,283 @@
+body {
+	margin: 0 auto;
+	text-align: center;
+	background-color: #C0C0C0;
+ }
+ 
+.datepicker{
+	font-size: 12px;
+}
+
+.clear {
+	clear: both;
+}
+
+.stylebutton {
+	font-size: 16px;
+	font-family: "Calibri",monospace;
+	width: 110px;
+	height: 25px;
+	background-color: #C0C0C0;
+	border-style: solid;
+	border-color: #C0C0C0;
+}
+
+#container {
+	margin: inherit;
+	width: 850px;
+	height: auto;
+	min-width: 850px;
+	min-height: 300px;
+	font-family: "Calibri",monospace;
+  }
+
+  
+/* Header */
+#header {
+	background-color: #FFFFFF;
+	height: 130px;
+	border-bottom-right-radius: 2% 10%;
+	border-bottom-left-radius: 2% 10%;
+}
+
+#header #titleheader {
+	font-size: 28px;
+	float: left;
+	padding-top: 80px;
+	padding-left: 20px;
+}
+
+#header #version {
+	font-size: 14px;
+	float: right;
+	padding-top: 94px;
+	padding-right: 20px;
+}
+
+/* Report Pane */
+
+#reportpane {
+	margin-top: 10px;
+	background-color: #FFFFFF;
+	height: 160px;
+	text-align: center;
+	min-width: 850px;
+}
+
+#reportpane .header {
+	background-color: #285ea6;
+	color: #FFFFFF;
+}
+
+#reportpane #reportparameters {
+	width: 463px;
+	float: left;
+}
+
+#reportpane #reportparameters .parameterslabel {
+	text-align: right;
+	width: 150px;
+}
+
+#reportpane #reportsummary {
+	width: 385px;
+	float: right;'
+}
+
+#reportpane #reportsummary .colheadervalue {
+	text-align: center;
+	height: 30px;
+}
+
+#reportpane #reportsummary .colvalue {
+	font-weight: bold;
+	width: 50px;
+	text-align: center;
+}
+
+#reportpane #reportparameters #datechooser #startdate {
+	margin-top: 20px;
+	float: right;
+	padding-right: 5px;
+}
+
+#reportpane #reportparameters #datechooser #enddate{ 
+	margin-top: 20px;
+	float: right;
+}
+
+#reportpane #reportparameters #reconsource {
+	position: relative;
+}
+
+#reportpane #reportparameters #reconsource #fakefile {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+}
+
+#reportpane #reportparameters #reconsource #fileinput {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	top: 10px;
+	left: 90px;
+	z-index: 2;
+}
+
+#reportpane #reportparameters #reconsource #fakefile #reconsourcelabel {
+	padding-top: 2px;
+	padding-left: 5px;
+	float: left;
+}
+
+#reportpane #reportparameters #reconsource #fakefile #fakefiletext{
+	padding-right: 5px;
+	padding-left: 5px;
+	float: left;
+}
+
+#reportpane #reportparameters #reconsource #fakefile #browsebtn {
+	float: right;
+}
+
+#reportpane #reportparameters #reconsource #fakefile #fakefiletext #fakefilename {
+	width: 220px;
+}
+
+
+#reportpane  .buttongroup {
+	padding-left: 15px;
+	padding-top: 30px;
+}
+
+#reportpane .buttonleft {
+	padding-right: 10px;
+	float:left;
+}
+
+#reportpane .buttonright {
+	float:left;
+}
+
+
+#reportpane #reportsummary #napitable {
+	float: left;
+	text-align: right;
+	padding-left: 20px;
+}
+
+#reportpane #reportsummary #reconsourcetable {
+	float: right;
+	text-align: right;
+	padding-right: 40px;
+}
+
+#reportpane #reportsummary #verticaldivider{ 
+	float: left;
+	margin-top: 10px;
+	height: 120px;
+	border-left: thin solid #C0C0C0;
+}
+
+/* Result Pane*/
+#resultpane {
+	margin-top: 10px;
+	background-color: #FFFFFF;
+	height: auto;
+	min-height: inherit;
+	text-align: center;
+	overflow: hidden;
+}
+
+#resultpane #resultstable { 
+	margin-top: 10px;
+	margin-left: 2px;
+	border-collapse:collapse;
+}
+
+#resultpane #resultstable td.usagetype {
+	background:#285ea6 repeat-x scroll center left; 
+	color:#FFFFFF; 
+	text-align: center;
+	border-left: thin solid #FFFFFF;
+	width: 50px;
+}
+
+#resultpane #resultstable td.appname {
+	background:#285ea6 repeat-x scroll center left; 
+	color:#FFFFFF; 
+	text-align: center;
+	border-left: thin solid #FFFFFF;
+	width: 300px;
+}
+
+#resultpane #resultstable td.developer { 
+	background:#285ea6 repeat-x scroll center left; 
+	color:#FFFFFF; 
+	text-align: center;
+	border-left: thin solid #FFFFFF;
+	width: 150px;
+	
+}
+
+#resultpane #resultstable td.sales {
+	background:#285ea6 repeat-x scroll center left; 
+	color:#FFFFFF; 
+	text-align: center;
+	border-left: thin solid #FFFFFF;
+	width: 50px;
+}
+
+#resultpane #resultstable td.count {
+	background:#285ea6 repeat-x scroll center left; 
+	color:#FFFFFF; 
+	text-align: center;
+	border-left: thin solid #FFFFFF;
+	width: 50px;
+}
+
+#resultpane #resultstable tr.odd td { 
+	background:#fff none repeat-x scroll center left; 
+	cursor:pointer; 
+	width:147px;
+}
+
+div.arrowright { 
+	background:transparent url(../images/arrowright.png) no-repeat scroll -16px -8px; /*down: -16px -8px*/
+	width:16px; 
+	height:16px; 
+	display:block;
+}
+
+div.arrowdown { 
+	background:transparent url(../images/arrowdown.png) no-repeat scroll -8px -16px; /*down: -16px -8px*/
+	width:16px; 
+	height:16px; 
+	display:block;
+}
+
+#resultpane #resultstable tr.parent{
+	cursor:pointer;
+	font-weight:bold;
+}
+
+#resultpane  .buttongroup {
+	padding-left: 15px;
+	padding-top: 30px;
+}
+
+#resultpane .buttonleft {
+	padding-right: 10px;
+	float:left;
+}
+
+#resultpane .buttonright {
+	float:left;
+}
+
+
+

@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* TAB MENU */
+ul.tabs {padding: 0; float: left; list-style: none; height: 34px; width: 100%; overflow: hidden;}
+ul.tabs li {float: left; margin: 0; padding: 0; height: 34px; width: 150px; text-align: center; line-height: 34px; background: url(../images/tab-bg-hover.png) no-repeat; overflow: hidden; position: relative;}
+ul.tabs li a.main-menu {text-decoration: none; color: #D2D2B9; display: block; font-size: 14px; padding: 0; outline: none;}
+ul.tabs li a.main-menu:hover {color: #FFB048;}
+html ul.tabs li.active, html ul.tabs li.active a.main-menu {background: url(../images/tab-bg.png) no-repeat; color: #444444;}
+.tab_container {border-top: none; clear: both; float: left; width: 100%; height: 27px; overflow: hidden;} 
+.tab_content {padding: 8px; font-size: 13px;}
+.tab_content a.sub-menu {padding:2px 14px; background: url(../images/icn-bullet.png) 4px center no-repeat; color: #718F18; background-color: #D2D2B9;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.tab_content a.sub-menu:hover, .tab_content a.active {color: #444444;}
+
+/* TABS */
+.tab {margin:0 0px 0 0; padding:8px 20px 7px 20px; line-height:25px; color:#999999; border: 1px solid #E2E2E2; cursor:pointer; font-size:8pt;}
+.tab:hover, .tab-active {
+	/* Mozilla Firefox */ 
+	background: -moz-linear-gradient(center top , #FFFFFF 0pt, #DDDDDD 100%); 
+	/* IE 5.5-7 */  
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DDDDDD');
+	/* IE 8 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#DDDDDD)";    
+	background-image: -ms-linear-gradient(center top, #FFFFFF, #DDDDDD);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0pt, #DDDDDD 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, center, left, color-stop(#FFFFFF), color-stop(#DDDDDD));
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DDDDDD));
+	/* W3C */ 
+	background: linear-gradient(center top, #FFFFFF 0pt, #DDDDDD 100%);
+}
+.tab_radius {
+	/* Mozilla Firefox */ 
+	-moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -khtml-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+/* ICO */
+.ico {width:20px; height:20px; background-position:top left; background-repeat:no-repeat; cursor:pointer;}
+.ico:hover {background-position:top right;}
+
+.ico_logout {background-image:url(../images/ico_logout.png);}
+.ico_dashboard {background-image:url(../images/ico_dashboard.png);}
+.ico_user {background-image:url(../images/ico_user.png);}
+.ico_category, .ico_product, .ico_coupon {background-image:url(../images/ico_category.png);}
+.ico_article, .ico_report {background-image:url(../images/ico_article.png);}
+.ico_newsletter {background-image:url(../images/ico_newsletter.png);}
+.ico_plugin {background-image:url(../images/ico_plugin.png);}
+.ico_settings, .ico_admin {background-image:url(../images/ico_settings.png);}
+.ico_shipping {background:transparent; background-image:url(../images/ico_stat.png);}
+
+.ico_private {background:transparent; background-image:url(../images/ico_private.png); text-indent:40px;}
+.ico_public {background:transparent; background-image:url(../images/ico_public.png); text-indent:40px;}
+.ico_delete {background:transparent; background-image:url(../images/ico_delete.png); text-indent:40px;}
+.ico_view {background:transparent; background-image:url(../images/ico_view.png); text-indent:40px;}
+.ico_draft {background:transparent; background-image:url(../images/ico_draft.png); text-indent:40px;}
+.ico_preview {background:transparent; background-image:url(../images/ico_preview.png); text-indent:40px;}
+.ico_forapproval {background:transparent; background-image:url(../images/ico_forapproval.png); text-indent:40px;}
+.ico_approve {background:transparent; background-image:url(../images/ico_approve.png); text-indent:40px;}
+.ico_reject {background:transparent; background-image:url(../images/ico_reject.png); text-indent:40px;}
+.ico_edit {background:transparent; background-image:url(../images/ico_edit.png); text-indent:40px;}
+.ico_stat {background:transparent; background-image:url(../images/ico_stat.png); text-indent:40px;}
+.ico_publish {background:transparent; background-image:url(../images/ico_publish.png); text-indent:40px;}
+.ico_forpublish {background:transparent; background-image:url(../images/ico_forpublish.png); text-indent:40px;}
+.ico_active {background:transparent; background-image:url(../images/ico_active.png); text-indent:40px;}
+.ico_pending {background:transparent; background-image:url(../images/ico_pending.png); text-indent:40px;}
+.ico_cancelled {background:transparent; background-image:url(../images/ico_cancelled.png); text-indent:40px;}
+.ico_add {background:transparent; background-image:url(../images/ico_add.png); text-indent:40px;}
+.ico_noaccess {background:transparent; background-image:url(../images/ico_noaccess.png); text-indent:40px;}
+.ico_access {background:transparent; background-image:url(../images/ico_access.png); text-indent:40px;}
+.ico_info {background:transparent; background-image:url(../images/ico_info.png); text-indent:40px;}
+.ico_print {background:transparent; background-image:url(../images/ico_print.png); text-indent:40px;}
+
+.icoheader {width:20px; height:55px; background-position:top left; background-repeat:no-repeat;}
+
+.header_access {background:transparent; background-image:url(../images/header_access.png); text-indent:40px;}
+.header_add {background:transparent; background-image:url(../images/header_add.png); text-indent:40px;}
+.header_edit {background:transparent; background-image:url(../images/header_edit.png); text-indent:40px;}
+.header_delete {background:transparent; background-image:url(../images/header_delete.png); text-indent:40px;}
+.header_approve {background:transparent; background-image:url(../images/header_approve.png); text-indent:40px;}
+.header_publish {background:transparent; background-image:url(../images/header_publish.png); text-indent:40px;}
+.header_endorse {background:transparent; background-image:url(../images/header_endorse.png); text-indent:40px;}
+
+/* INPUT/LINK/NAVIGATION BUTTON */
+.action_button {background: none repeat scroll 0 0 #F2F2F2; border: 1px solid #DDDDDD; border-radius: 20px 20px 20px 20px; margin: 0 3px 0 3px; padding: 4px 10px; white-space: nowrap; font-size:8pt;}
+
+.button {background: url(../images/button-bg-hover.png) repeat-x; color: #444444; background-position: top center; border: 1px solid #CCCCCC/*#057ED0*/; cursor: pointer; display: inline-block; overflow: visible; padding: 5px 10px; white-space: nowrap; margin: 0; outline: medium none;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.navigation {background: url(../images/button-bg-hover.png) repeat-x; color: #444444; background-position: top center; border: 1px solid #CCCCCC/*#057ED0*/; cursor: pointer; display: inline-block; overflow: visible; padding: 4px 5px; white-space: nowrap; margin: 0; outline: medium none;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.navigation-active {background: url(../images/button-bg-hover.png) repeat-x; color: #718F18; font-weight: bold; border: 1px solid #CCCCCC; color: #718F18; background-position: bottom center; cursor: pointer; display: inline-block; overflow: visible; padding: 4px 5px; white-space: nowrap; margin: 0; outline: medium none;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.default_button {width: 100%;}
+.pagination_button {height:20px; font-size:10px;}
+.small_button {height:24px; font-size:11px;}
+
+.button:hover, .button:focus, .pagination_button:hover, .pagination_button:focus, .navigation:hover, .navigation:focus {border: 1px solid #CCCCCC; color: #718F18; background-position: bottom center;}
+
+/* MENU */
+.menu {width: 100%; height: 35px; line-height:35px; white-space: nowrap; text-align:left; cursor:pointer; display:block; text-decoration:none; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); 
+	box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF; 
+	-moz-transition: opacity 0.1s ease 0s, font-size 0.1s ease 0s; 
+	-moz-user-select: none; 
+	-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    
+	border: 1px solid #CCCCCC; 
+	background: #DDDDDD;
+	/* Mozilla Firefox */ 
+	background: -moz-linear-gradient(center top , #FFFFFF 0pt, #DDDDDD 100%); 
+	/* IE 5.5-7 */  
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DDDDDD');
+	/* IE 8 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#DDDDDD)";    
+	background-image: -ms-linear-gradient(center top, #FFFFFF, #DDDDDD);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #FFFFFF 0pt, #DDDDDD 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, center, left, color-stop(#FFFFFF), color-stop(#DDDDDD));
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DDDDDD));
+	/* W3C */ 
+	background: linear-gradient(center top, #FFFFFF 0pt, #DDDDDD 100%);
+}
+
+.menu:hover, .menu:active, .menu:focus {border: 1px solid #057ED0; color: #FFFFFF; font-weight: bold; box-shadow: 0 1px 0 #FFFFFF; -moz-border-radius: 3px; border-radius: 3px; filter: dropshadow(color=#90BB65, offx=0, offy=-1);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background: #019AD2;
+	/* Mozilla Firefox */ 
+    background: -moz-linear-gradient(#33BCEF, #019AD2);
+	/* IE 5.5-7 */ 
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33BCEF', endColorstr='#019AD2');
+	/* IE 8 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33BCEF, endColorstr=#019AD2)";    
+	background-image: -ms-linear-gradient(center top, #33BCEF, #019AD2);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #33BCEF, #019AD2);
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, center, left, color-stop(#33BCEF), color-stop(#019AD2));
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-gradient(linear, left top, left bottom, from(#33BCEF), to(#019AD2));
+	/* Proposed W3C Markup */ 
+	background: linear-gradient(center top, #33BCEF, #019AD2);
+}

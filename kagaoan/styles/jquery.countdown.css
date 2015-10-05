@@ -1,0 +1,76 @@
+/* jQuery Countdown styles 1.5.11. */
+.hasCountdown {
+	/*
+	border: 1px solid #ccc;
+	background-color: #eee;
+	*/
+	background: #EEEEEE; white-space: nowrap; border: 1px solid #CCCCCC; width: 100%; display:block;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 #EEEEEE;
+	-moz-transition: opacity 0.1s ease 0s, font-size 0.1s ease 0s;
+	-moz-user-select: none;
+	padding-top:5px;
+	padding-bottom:10px;
+	
+	/* Mozilla Firefox */ 
+	background: -moz-linear-gradient(center top , #DDDDDD 0pt, #FFFFFF 100%); 
+	/* IE */ 
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#FFFFFF');
+	/* Opera */ 
+	background: -o-linear-gradient(center top, #DDDDDD 0pt, #FFFFFF 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, center, left, color-stop(#DDDDDD), color-stop(#FFFFFF));
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), to(#FFFFFF));
+	/* Proposed W3C Markup */ 
+	background: linear-gradient(center top, #DDDDDD 0pt, #FFFFFF 100%);
+}
+.countdown_rtl {
+	direction: rtl;
+}
+.countdown_holding span {
+	background-color: #ccc;
+}
+.countdown_row {
+	clear: both;
+	width: 100%;
+	padding: 0px 2px;
+	text-align: center;
+}
+.countdown_show1 .countdown_section {
+	width: 98%;
+}
+.countdown_show2 .countdown_section {
+	width: 48%;
+}
+.countdown_show3 .countdown_section {
+	width: 32.5%;
+}
+.countdown_show4 .countdown_section {
+	width: 24.5%;
+}
+.countdown_show5 .countdown_section {
+	width: 19.5%;
+}
+.countdown_show6 .countdown_section {
+	width: 16.25%;
+}
+.countdown_show7 .countdown_section {
+	width: 14%;
+}
+.countdown_section {
+	display: block;
+	float: left;
+	font-size: 80%;
+	text-align: center;
+	color:#999999;
+}
+.countdown_amount {
+	color:#90BB65;
+	font-weight:bold;
+	font-size: 14pt;
+}
+.countdown_descr {
+	display: block;
+	width: 100%;
+}

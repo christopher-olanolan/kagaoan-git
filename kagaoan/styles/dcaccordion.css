@@ -1,0 +1,48 @@
+/* Page */
+ul,ol,li,dl,dt,dd {border:0;outline:none;margin:0;padding:0;}
+ul, ul li{list-style: none;}
+ul.text {margin-bottom: 1em; line-height: 1.5em;}
+.text-center {text-align: left;}
+.demo-container {padding: 20px; float: left; width: 260px;}
+.demo-container h4 {font-size: 14px; margin: 0 0 5px 0;}
+.clear {clear: both;}
+.dcjq-count {float: right; margin-right: 3px;}
+
+ul#accordion li {padding-bottom: 5px;}
+ul#accordion li ul {padding-top: 5px;}
+ul#accordion li ul li {padding-top: 5px; padding-bottom: 5px; text-align: left; text-indent:14px; font-size:8pt; line-height:25px; border-bottom:1px solid #DDDDDD; overflow:hidden; font-weight:normal; box-shadow:	0 1px 0 #FFFFFF;}
+
+ul#accordion li a.active {border: 1px solid #057ED0; color: #FFFFFF; font-weight:bold; -moz-border-radius: 3px; border-radius: 3px; box-shadow: 0 1px 0 #FFFFFF; 
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background: #019AD2;
+	/* Mozilla Firefox */ 
+    background: -moz-linear-gradient(#33BCEF, #019AD2);
+	/* IE 5.5-7 */ 
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33BCEF', endColorstr='#019AD2');
+	/* IE 8 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33BCEF, endColorstr=#019AD2)";    
+	background-image: -ms-linear-gradient(center top, #33BCEF, #019AD2);
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #33BCEF, #019AD2);
+	/* Webkit (Safari/Chrome 10) */ 
+	background: -webkit-gradient(linear, center, left, color-stop(#33BCEF), color-stop(#019AD2));
+	/* Webkit (Chrome 11+) */ 
+	background: -webkit-gradient(linear, left top, left bottom, from(#33BCEF), to(#019AD2));
+	/* Proposed W3C Markup */ 
+	background: linear-gradient(center top, #33BCEF, #019AD2);
+}
+
+ul#accordion li a span.menutext {float: left;}
+
+ul#accordion li ul li a.active {font-weight:bold; border:0; border-radius:0; color: #797979; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); box-shadow: 0 0 0 #FFFFFF;
+    background: none;
+	/* IE 5.5-7 */ 
+	filter: none;
+	/* IE 8 */ 
+	-ms-filter: none;    
+	background-image: none;
+}
+
+ul#accordion li ul li a {display:block; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);}
+ul#accordion li ul li:hover {background-color: #EEEEEE;}
+ul#accordion li ul li a:hover {color: #797979;}

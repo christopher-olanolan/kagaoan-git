@@ -1,0 +1,17 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'Bebas Neue';
+	src:url('./fonts/BebasNeue.ttf') format('truetype');
+
+
+}
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'Myriad Pro';
+	src:url('./fonts/MyriadPro.eot');
+	src:url('./MyriadPro.eot?#iefix') format('embedded-opentype');
+
+}

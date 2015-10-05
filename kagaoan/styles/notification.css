@@ -1,0 +1,52 @@
+#notification {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 10px;
+	width: 30%;
+	height: 64px;
+	z-index: 2147483647;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#notification-width {
+	width: 100%;
+}
+
+#notification-container {
+	position: relative;
+	width: 100%;
+	display:block;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px;
+}
+
+.noti-warning {
+	color: rgb(130, 98, 0);
+	border: 1px solid rgb(255, 194, 55);
+	background: rgb(255, 234, 168);
+}
+
+.noti-error {
+	color: rgb(255, 255, 255);
+	border: 1px solid rgb(226, 83, 83);
+	background: rgb(255, 129, 129);
+}
+
+.noti-success {
+	color: rgb(0, 100, 0);
+	border: 1px solid rgb(124, 221, 119);
+	background: rgb(188, 245, 188);
+}
+
+.noti-info {
+	color: rgb(255, 255, 255);
+	border: 1px solid rgb(59, 173, 214);
+	background: rgb(120, 197, 231);
+} 
