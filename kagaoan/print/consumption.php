@@ -1,4 +1,6 @@
 		<?php
+			if (!defined('__CONTROL__')) die ("You Cannot Access This Script Directly");
+		
 			$login_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
 			$filter_sort = $filter_sort=="" ? "t1.id":$filter_sort;
 			$filter_dir = $filter_dir=="" ? "ASC":$filter_dir;
@@ -42,7 +44,7 @@
 						
 					switch ($filter_week):
 						case 1:
-								$day_string = "first ".$target_day;
+							$day_string = "first ".$target_day;
 						break;
 						case 2:
 							$day_string = "second ".$target_day;
@@ -102,6 +104,9 @@
 				break;
 			endswitch;
 					
+			$filter_from = $filter_date_from;
+			$filter_to = $filter_date_to;
+			
 			$filter_date_query = $filter_report != 'all' ? ' AND DATE(t1.consumption_date) BETWEEN DATE("'.$filter_date_from.'") AND DATE("'.$filter_date_to.'") ':'';
 					
 				

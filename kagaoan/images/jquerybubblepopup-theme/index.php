@@ -1,0 +1,1 @@
+<? if (!defined('__CONTROL__')) die ("You Cannot Access This Directory Directly"); ?>

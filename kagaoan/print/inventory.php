@@ -1,4 +1,6 @@
 <?php
+if (!defined('__CONTROL__')) die ("You Cannot Access This Script Directly");
+
 // MANAGE INVETORY
 $login_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
 $filter_sort = $filter_sort=="" ? "t1.id":$filter_sort;

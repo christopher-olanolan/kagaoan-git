@@ -666,6 +666,12 @@ else:
 				'active' => 1,
 				'created' => $created
 			);
+			
+			if ($deduction_id == 3):
+				$data['personnel_id'] = $personnel_id;
+			else:
+				$data['personnel_id'] = 0;
+			endif;
 
 			$connect->insert($data, deduction);
 			
@@ -704,6 +710,12 @@ else:
 				'price' => $price
 			);
 
+			if ($deduction_id == 3):
+				$data['personnel_id'] = $personnel_id;
+			else:
+				$data['personnel_id'] = 0;
+			endif;
+			
 			$connect->update($data, deduction, "id = '$id'");
 			
 			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);

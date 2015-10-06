@@ -211,15 +211,19 @@ else:
 	}
 
 	jQuery.validator.addMethod("notEqual", function(value, element, param) {
-	  return this.optional(element) || value != param;
+	  	return this.optional(element) || value != param;
+	});
+
+	jQuery.validator.addMethod("requiredIf", function(value, element, param) {
+		return parseInt(value) > 0 && parseInt(param.required) == parseInt(param.element.val());
 	});
 	
 	jQuery.validator.addMethod("lessThan", function(value, element, param) {
-	  return parseInt(param.val()) > parseInt(value) || parseInt(param.val()) == parseInt(value);
+	  	return parseInt(param.val()) > parseInt(value) || parseInt(param.val()) == parseInt(value);
 	});
 	
 	jQuery.validator.addMethod("isNumeric", function(value, element) {
-	  return (parseInt(value));
+	  	return (parseInt(value));
 	});
 	
 	jQuery.validator.addMethod("ckeditor", function(value, element) { 

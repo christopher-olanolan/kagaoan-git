@@ -436,10 +436,13 @@
 					SELECT 
 						t1.*,
 						t2.plate,
-						t3.type_name
+						t3.type_name,
+						t4.firstname,
+						t4.lastname
 					FROM deduction as t1
 						LEFT JOIN truck AS t2 ON t1.truck_id = t2.id
 						LEFT JOIN deduction_type AS t3 ON t1.deduction_id = t3.id
+						LEFT JOIN personnel AS t4 ON t1.personnel_id = t4.id
 					WHERE
 						t1.active = 1 "
 						.$filter_plate_query
@@ -504,6 +507,11 @@
 		                $date_to = strtotime($query_list[$x]['date_to']);
 		                $date = date('F d, Y', $date_from) .' &mdash; '. date('F d, Y', $date_to);
 	 					$description = $description == '' || $description == 'D' ? $date:$description;
+	 					
+	 					if ($query_list[$x]['deduction_id'] == 3):
+	 						$description = 'Payroll for <i>'. $query_list[$x]['firstname'] .' '.$query_list[$x]['lastname'] . '</i><br />' .$description;
+	 					endif;
+	 					
 		            	?>
 		                <tr class="line_20">
 							<td class="table_solid_left table_solid_bottom px_12 unselectable" align="center"><span class="break"><?=$type_name?></span></td>

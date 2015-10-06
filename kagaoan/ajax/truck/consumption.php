@@ -100,6 +100,9 @@
 				break;
 			endswitch;
 			
+			$filter_from = $filter_date_from;
+			$filter_to = $filter_date_to;
+			
 			$filter_date_query = $filter_report != 'all' ? ' AND DATE(t1.consumption_date) BETWEEN DATE("'.$filter_date_from.'") AND DATE("'.$filter_date_to.'") ':'';
 
 			$query_search = $filter_search != "" ? ' AND (

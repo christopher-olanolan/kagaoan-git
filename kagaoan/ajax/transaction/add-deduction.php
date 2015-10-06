@@ -29,6 +29,22 @@
 				'Choose type...',				// default null option name 'Choose option...'	
 				'0'								// select type 1 = multiple or 0 = single
 			);
+			
+			$option_name = array('firstname','lastname');
+			$select_personnel =  $select->option_query(
+				'personnel', 					// table name
+				'personnel_id',  				// name='$name'
+				'personnel_id', 				// id='$id'
+				'id',							// value='$value'
+				$option_name,					// option name
+				'0',							// default selected value
+				'active = "1" ',				// query condition(s)
+				'id',							// 'order by' field name
+				'ASC',							// sort order 'asc' or 'desc'
+				'selectoption default_select',	// css class
+				'Choose personnel...',			// default null option name 'Choose option...'
+				'0'								// select type 1 = multiple or 0 = single
+			);
 		?>
 			<script type="text/javascript">
 			$(document).ready(function() {
@@ -112,6 +128,14 @@
 					$('#type_name').val('');
 					$('#add_deduction_container').addClass('hidden');
 				}	
+
+				$('#deduction_id').change(function() {					
+					if ($(this).val() == '3'){
+						$('#tr_personnel_id').removeClass('hidden');
+					} else {
+						$('#tr_personnel_id').addClass('hidden');
+					}
+				});	
 			});
 		    </script>
 		    
@@ -149,6 +173,13 @@
 							</span>
                         </td>
                         <td class="line_30" valign="top"><label for="deduction_id" generated="false" class="error"></label></td>
+                    </tr>
+                    <tr id="tr_personnel_id" class="hidden">
+                    	<td class="pad_left_15 line_30" valign="top">Personnel: </td>
+                        <td>
+                        	<?=$select_personnel?>
+                        </td>
+                        <td class="line_30" valign="top"><label for="personnel_id" generated="false" class="error"></label></td>
                     </tr>
                     <tr>
                     	<td class="pad_left_15 line_30" valign="top">Description: </td>
@@ -194,6 +225,12 @@
 							required: true,
 							notEqual: 0
 						},
+						personnel_id : {
+							requiredIf: { 
+								required: 3, 
+								element: $("#deduction_id") 
+							}
+						},
 						date_from: {
 							required: true
 						},
@@ -212,6 +249,9 @@
 						deduction_id: {
 							required: "Please select deduction type.",
 							notEqual: "Please select deduction type."
+						},
+						personnel_id: {
+							requiredIf: "Please select personnel."
 						},
 						date_from: {
 							required: "Please enter date start."

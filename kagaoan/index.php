@@ -30,7 +30,6 @@ if(!empty($file)):
 			case 'action':
 			case 'ajax':
 			case 'download':
-			case 'api':	
 			case 'print':	
 				include dirname(__FILE__) .'/'. $file.'.php';
 			break;
