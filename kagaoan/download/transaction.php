@@ -15,8 +15,9 @@ $filter_plate_query = $filter_plate=="all" ? " ": ' AND t1.truck_id = "'.$filter
 $filter_soa_query = $filter_soa=="all" ? " ": ' AND t1.soa = "'.$filter_soa.'"';
 $filter_delivered_query = $filter_delivered=="all" ? " ": ' AND t1.delivered = "'.$filter_delivered.'"';
 $filter_date_query = $filter_from=="" || $filter_to=="" ? " ":' AND (
-	DATE(t1.transaction_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'")
-) ';
+(DATE(t1.transaction_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'"))
+	OR ((DATE(t1.delivered_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'"))) 
+)';
 	
 $query_search = $filter_search != "" ? ' AND (
 	t1.soa LIKE "%'.$filter_search.'%" OR

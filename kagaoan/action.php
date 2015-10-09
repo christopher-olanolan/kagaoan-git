@@ -521,20 +521,30 @@ else:
 				'destination' => $destination,
 				'truck_id' => $truck_id,
 				'driver_id' => $driver_id,
+				'paid' => $paid,
 				'cs' => $cs,
 				'rate' => $rate,
 				'active' => 1,
 				'created' => $created
 			);
 				
-			if ($delivered > 0){
+			if ((int) $paid > 1):
+				$data['payment'] = $payment;
+			else:
+				$data['payment'] = 0;
+			endif;
+			
+			if ($delivered > 0):
 				$data['soa'] = $soa;
 				$data['urc_doc'] = $urc_doc;
 				$data['delivered_date'] = $delivered_date;
 				$data['status'] = 1;
-			} else {
+			else:
 				$data['status'] = 0;
-			}
+				$data['soa'] = '';
+				$data['urc_doc'] = '';
+				$data['delivered_date'] = '';
+			endif;
 			
 			$connect->insert($data, transaction);
 			
@@ -591,23 +601,30 @@ else:
 				'destination' => $destination,
 				'truck_id' => $truck_id,
 				'driver_id' => $driver_id,
+				'paid' => $paid,
 				'cs' => $cs,
 				'rate' => $rate,
 				'active' => 1,
 				'created' => $created
 			);
 				
-			if ($delivered > 0){
+			if ((int) $paid > 1):
+				$data['payment'] = $payment;
+			else:
+				$data['payment'] = 0;
+			endif;
+			
+			if ($delivered > 0):
 				$data['soa'] = $soa;
 				$data['urc_doc'] = $urc_doc;
 				$data['delivered_date'] = $delivered_date;
 				$data['status'] = 1;
-			} else {
+			else:
 				$data['status'] = 0;
 				$data['soa'] = '';
 				$data['urc_doc'] = '';
 				$data['delivered_date'] = '';
-			}
+			endif;
 
 			$connect->update($data, transaction, "id = '$id'");
 			

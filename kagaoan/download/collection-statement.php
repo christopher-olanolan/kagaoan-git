@@ -10,8 +10,9 @@ $filter_type_query = $filter_type=="all" ? " ": ' AND t1.deduction_id = "'.$filt
 $filter_plate_query = $filter_plate=="all" ? " ": ' AND t1.truck_id = "'.$filter_plate.'"';
 //$filter_soa_query = $filter_soa=="all" ? " ": ' AND t1.soa = "'.$filter_soa.'"';
 $filter_date_query = $filter_from=="" || $filter_to=="" ? " ":' AND (
-	DATE(t1.transaction_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'")
-) ';
+(DATE(t1.transaction_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'"))
+	OR ((DATE(t1.delivered_date) BETWEEN DATE("'.$filter_from.'") AND DATE("'.$filter_to.'"))) 
+)';
 	
 $from = strtotime($filter_from);
 $date_from = date('F d, Y', $from);
@@ -30,7 +31,7 @@ $query = "
 		LEFT JOIN location AS t3 ON t1.source = t3.id
 		LEFT JOIN location AS t4 ON t1.destination = t4.id
 	WHERE
-		t1.paid = 1 AND t1.delivered = 1 AND t2.active = 1 "
+		t1.paid > 1 AND t1.delivered = 1 AND t2.active = 1 "
 .$filter_plate_query
 .$filter_date_query;
 

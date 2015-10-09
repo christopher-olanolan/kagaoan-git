@@ -217,6 +217,14 @@ else:
 	jQuery.validator.addMethod("requiredIf", function(value, element, param) {
 		return parseInt(value) > 0 && parseInt(param.required) == parseInt(param.element.val());
 	});
+
+	jQuery.validator.addMethod("requiredIfNotEqual", function(value, element, param) {
+		return value.length > 0 && parseInt(param.notequal) != parseInt(param.element.val());
+	});
+
+	jQuery.validator.addMethod("requiredIfGreater", function(value, element, param) {
+		return parseInt(value) > 0 && parseInt(param.element.val()) > parseInt(param.greaterthan);
+	});
 	
 	jQuery.validator.addMethod("lessThan", function(value, element, param) {
 	  	return parseInt(param.val()) > parseInt(value) || parseInt(param.val()) == parseInt(value);
@@ -239,6 +247,11 @@ else:
     		dateFormat: "yy-mm-dd",
     		showSecond: false,
     		timeFormat: 'hh:mm:ss'
+    	});
+
+    	$('.isNumeric').keyup(function() {
+        	var _this = $(this);
+    		isNumeric(this);
     	});
     	
     	var content_height = $(window).height() - 285;

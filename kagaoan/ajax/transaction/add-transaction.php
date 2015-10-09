@@ -64,6 +64,21 @@
 				'Choose destination...',		// default null option name 'Choose option...'	
 				'0'								// select type 1 = multiple or 0 = single
 			);
+			
+			$select_payment =  $select->option_query(
+				'payment_option', 				// table name
+				'paid',	  						// name='$name'
+				'paid', 						// id='$id'
+				'id',							// value='$value'
+				'type_name',					// option name
+				'0',							// default selected value
+				'active = "1" ',				// query condition(s)
+				'id',							// 'order by' field name
+				'ASC',							// sort order 'asc' or 'desc'
+				'selectoption default_select',	// css class
+				'Choose payment...',			// default null option name 'Choose option...'
+				'0'								// select type 1 = multiple or 0 = single
+			);
 		?>
 			<script type="text/javascript">
 			$(document).ready(function() {
@@ -165,7 +180,28 @@
 					$('#add_location').val('');
 					$('#destination').val(0);
 					$('#add_location_container').addClass('hidden');
-				}	
+				}
+
+				$('#delivered').click(function() {
+			    	if ($(this).attr("checked") == 'checked'){
+					    $('#tr_delivered_date').removeClass('hidden');
+					    $('#tr_soa').removeClass('hidden');
+					    $('#tr_urc_doc').removeClass('hidden');
+						
+			    	} else {
+						$('#tr_delivered_date').addClass('hidden');
+						$('#tr_soa').addClass('hidden');
+						$('#tr_urc_doc').addClass('hidden');
+					}
+				});
+
+				$('#paid').change(function() {					
+					if ($(this).val() > 1){
+						$('#tr_payment').removeClass('hidden');
+					} else {
+						$('#tr_payment').addClass('hidden');
+					}
+				});
 			});
 		    </script>
 		    
@@ -230,6 +266,18 @@
                         <td><input id="delivered_date" name="delivered_date" type="text" class="inputtext default_inputtext datepicker" maxlength="50" value="<?=date("Y-m-d")?>" /></td>
                         <td><label for="delivered_date" generated="false" class="error"></label></td>
                     </tr>
+                    <tr>
+                    	<td class="pad_left_15">Payment Option: </td>
+                        <td>
+                        	<?=$select_payment?>
+                        </td>
+                        <td><label for="paid" generated="false" class="error"></label></td>
+                    </tr>
+                    <tr id="tr_payment" class="hidden">
+                    	<td class="pad_left_15">Payment: </td>
+                        <td><input onkeyup="isNumeric($(this));" id="payment" name="payment" type="text" class="inputtext default_inputtext" maxlength="50" value="0.00" /></td>
+                        <td><label for="payment" generated="false" class="error"></label></td>
+                    </tr>
                     <tr id="tr_soa" class="hidden">
                     	<td class="pad_left_15">SOA No.: </td>
                         <td><input id="soa" name="soa" type="text" class="inputtext default_inputtext" maxlength="50" value="" /></td>
@@ -267,13 +315,29 @@
             	$("#addForm").validate({
 					rules: {
 						soa: {
-							required: false
+							requiredIfNotEqual: { 
+								notequal: 0, 
+								element: $("#delivered") 
+							}
+						},
+						urc_doc: {
+							requiredIfNotEqual: { 
+								notequal: 0, 
+								element: $("#delivered") 
+							}
 						},
 						transaction_date: {
 							required: true
 						},
-						urc_doc: {
-							required: false
+						paid : {
+							required: true,
+							notEqual: 0
+						},
+						payment : {
+							requiredIfGreater: { 
+								greaterthan: 1, 
+								element: $("#paid") 
+							}
 						},
 						source : {
 							required: true,
@@ -300,13 +364,20 @@
 					},
 					messages: {
 						soa: {
-							required: "Please enter SOA No."
+							requiredIfNotEqual: "Please enter SOA No."
+						},
+						urc_doc: {
+							requiredIfNotEqual: "Please enter URC document"
 						},
 						transaction_date: {
 							required: "Please enter transaction date"
 						},
-						urc_doc: {
-							required: "Please enter URC document"
+						paid : {
+							required: "Please select payment option",
+							notEqual: "Please select payment option"
+						},
+						payment: {
+							requiredIfGreater: "Please enter payment"
 						},
 						source : {
 							required: "Please select source",
@@ -346,33 +417,6 @@
 			    $('.back').click(function(){
 			        ajaxLoad("<?=__ROOT__?>/index.php?file=<?=$file?>&ajax=<?=$ajax?>&control=manage","GET");
 			    });
-
-			    $('#delivered').click(function() {
-			    	if ($(this).attr("checked") == 'checked'){
-					    $('#tr_delivered_date').removeClass('hidden');
-					    $('#tr_soa').removeClass('hidden');
-					    $('#tr_urc_doc').removeClass('hidden');
-
-					    // TODO: validate true on active (not working)
-					    $("#addForm").validate({
-							rules: {
-								soa: {
-									required: true
-								}
-							},
-							messages: {
-								soa: {
-									required: "Please enter SOA No."
-								}
-							}
-					    });	
-						
-			    	} else {
-						$('#tr_delivered_date').addClass('hidden');
-						$('#tr_soa').addClass('hidden');
-						$('#tr_urc_doc').addClass('hidden');
-					}
-				});
 			});
             </script>
             <?
