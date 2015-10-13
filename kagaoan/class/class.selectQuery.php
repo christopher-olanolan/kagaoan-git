@@ -64,7 +64,24 @@ class Select extends mySQL {
 				$c = 0;
 				for ($n=0;$n<count($value);$n++):
 					$c++;
-					$option_name .= str_replace($invalid,'',$row[$x][$value[$n]]);
+				
+					if ($value[$n] == "transaction_date"):
+						$transaction_date = strtotime($row[$x][$value[$n]]);
+						$date = date('F d, Y', $transaction_date);
+						$option_name .= "(".$date.")";
+					elseif ($value[$n] == "source"):
+						$source = $this->single_result_array("SELECT location FROM location WHERE id = '{$row[$x][$value[$n]]}'");
+						$option_name .= $source['location'];
+					elseif ($value[$n] == "destination"):
+						$destination = $this->single_result_array("SELECT location FROM location WHERE id = '{$row[$x][$value[$n]]}'");
+						$option_name .= "&mdash; " . $destination['location'];
+					elseif ($value[$n] == "truck_id"):
+						$truck_id = $this->single_result_array("SELECT plate FROM truck WHERE id = '{$row[$x][$value[$n]]}'");
+						$option_name .= $truck_id['plate'];
+					else:
+						$option_name .= str_replace($invalid,'',$row[$x][$value[$n]]);
+					endif;
+					
 					$option_name .= $c==count($value) ? "" : " ";
 				endfor;
 			else:

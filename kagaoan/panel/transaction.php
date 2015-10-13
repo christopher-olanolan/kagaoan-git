@@ -8,6 +8,7 @@ else:
 		// TRANSACTION
 		case 'deduction':
 		case 'manage':
+		case 'payment':
 		case 'report':	
 			$filter  = "";
 			$filter .= $filter_search != '' ? "&filter_search=".$filter_search:"";

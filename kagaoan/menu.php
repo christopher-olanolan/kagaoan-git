@@ -58,6 +58,7 @@ else:
             </div>
             <div id="transaction" class="tab_content <?=$panel=='transaction'?'block':'hidden'?>">
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=manage" class="sub-menu <?=$panel=='transaction' && $section=='manage'?'active':''?>">Management</a>
+            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=payment" class="sub-menu <?=$panel=='payment' && $section=='payment'?'active':''?>">Payment</a>
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=deduction" class="sub-menu <?=$panel=='transaction' && $section=='deduction'?'active':''?>">Deduction</a>
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=report" class="sub-menu <?=$panel=='transaction' && $section=='report'?'active':''?>">Trucker Collection Statement</a>
             </div>

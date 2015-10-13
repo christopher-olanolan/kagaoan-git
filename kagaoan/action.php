@@ -1365,6 +1365,44 @@ else:
 		break;
 		// EOF EDIT DEDUCTION SETTING
 			
+		// ADD PAYMENT
+		case 'add-payment':
+			$created = date("Y-m-d H:i:s");
+			$invalid = array ("+","=","-"," ",",","/","L","l",",");
+			$payment = str_replace($invalid,'',$payment);
+				
+			$data = array(
+				'urc_doc' => $urc_doc,
+				'transaction_id' => $transaction_id,
+				'payment' => $payment,
+				'payment_date' => $payment_date,
+				'active' => 1,
+				'created' => $created
+			);
+		
+			$connect->insert($data, payment);
+				
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+				
+			$data = array(
+				'user_id' => $user_id,
+				'created' => $date,
+				'module' => 'payment',
+				'action' => 'add',
+				'json' => htmlentities($json, ENT_QUOTES)
+			);
+				
+			$connect->insert($data, audit_log);
+		
+			$_SESSION[__SITE__.'_MESSAGE'] = "Payment successfully added.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=payment");
+			exit();
+		break;
+		// EOF ADD PAYMENT
+		
 		default:
 			redirect(0,__ROOT__."/index.php?file=process&process=invalid");
 			exit();

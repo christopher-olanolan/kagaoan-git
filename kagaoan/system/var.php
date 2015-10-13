@@ -161,6 +161,16 @@ $transactionsortdata = array (
 );
 $transactionsortdatacount = count($transactionsortdata);
 
+$paymentsortdata = array (
+	array ('value'=>'t1.id','name'=>'Default'),
+	array ('value'=>'t2.soa','name'=>'SOA No.'),
+	array ('value'=>'t1.urc_doc','name'=>'URC Document'),
+	array ('value'=>'t3.location','name'=>'Source'),
+	array ('value'=>'t4.location','name'=>'Destination'),
+	array ('value'=>'t6.plate','name'=>'Plate No.')	
+);
+$paymentsortdatacount = count($paymentsortdata);
+
 $inventorysortdata = array (
 	array ('value'=>'t1.id','name'=>'Default'),
 	array ('value'=>'t1.name','name'=>'Name'),

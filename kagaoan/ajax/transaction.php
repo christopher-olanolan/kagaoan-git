@@ -13,6 +13,23 @@ else:
 	);
 	
 	switch($control):
+		// AJAX: GET PAYMENT
+		case 'get-payment':
+			$string = " SELECT SUM(payment) AS payment FROM payment WHERE
+				transaction_id = '{$transaction_id}'
+				AND active = '1'";
+	
+			$query = $connect->single_result_array($string);
+			echo json_encode($query);
+		break;
+
+		// AJAX: GET CREDIT
+		case 'get-credit':
+			$string = " SELECT cs, rate FROM transaction WHERE id = '{$transaction_id}'";
+			$query = $connect->single_result_array($string);
+			echo json_encode($query);
+		break;
+			
 		// AJAX: ADD LOCATION
 		case  'add-location':
 			$query = $connect->single_result_array("SELECT id FROM location WHERE LOWER(location) = LOWER('{$location}') ");
@@ -115,6 +132,12 @@ else:
 		case 'edit-transaction': // EDIT TRANSACTION
 			include (str_replace('//','/',dirname(__FILE__).'/') . 'transaction/'.$control.'.php');
 		break;		
+		
+		case 'payment': // MANAGE PAYMENT
+		case 'add-payment': // ADD PAYMENT
+		case 'edit-payment': // EDIT PAYMENT
+			include (str_replace('//','/',dirname(__FILE__).'/') . 'transaction/'.$control.'.php');
+		break;	
 		
 		case 'deduction': // MANAGE DEDUCTION
 		case 'add-deduction': // ADD DEDUCTION
