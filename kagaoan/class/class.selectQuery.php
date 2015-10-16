@@ -74,7 +74,7 @@ class Select extends mySQL {
 						$option_name .= $source['location'];
 					elseif ($value[$n] == "destination"):
 						$destination = $this->single_result_array("SELECT location FROM location WHERE id = '{$row[$x][$value[$n]]}'");
-						$option_name .= "&mdash; " . $destination['location'];
+						$option_name .= "to " . $destination['location'];
 					elseif ($value[$n] == "truck_id"):
 						$truck_id = $this->single_result_array("SELECT plate FROM truck WHERE id = '{$row[$x][$value[$n]]}'");
 						$option_name .= $truck_id['plate'];

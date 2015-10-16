@@ -225,6 +225,10 @@ else:
 	jQuery.validator.addMethod("requiredIfGreater", function(value, element, param) {
 		return parseInt(value) > 0 && parseInt(param.element.val()) > parseInt(param.greaterthan);
 	});
+
+	jQuery.validator.addMethod("requiredIfLessThan", function(value, element, param) {
+		return parseInt(value) > 0 && parseInt(value) <= parseInt(param.element.html());
+	});
 	
 	jQuery.validator.addMethod("lessThan", function(value, element, param) {
 	  	return parseInt(param.val()) > parseInt(value) || parseInt(param.val()) == parseInt(value);

@@ -1403,6 +1403,41 @@ else:
 		break;
 		// EOF ADD PAYMENT
 		
+		// EDIT PAYMENT
+		case 'edit-payment':
+			$created = date("Y-m-d H:i:s");
+			$invalid = array ("+","=","-"," ",",","/","L","l",",");
+			$payment = str_replace($invalid,'',$payment);
+		
+			$data = array(
+				'urc_doc' => $urc_doc,
+				'payment' => $payment,
+				'payment_date' => $payment_date
+			);
+		
+			$connect->update($data, payment, "id = $id");
+		
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+		
+			$data = array(
+					'user_id' => $user_id,
+					'created' => $date,
+					'module' => 'payment',
+					'action' => 'edit',
+					'json' => htmlentities($json, ENT_QUOTES)
+			);
+		
+			$connect->insert($data, audit_log);
+		
+			$_SESSION[__SITE__.'_MESSAGE'] = "Payment successfully updated.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=payment");
+			exit();
+			break;
+			// EOF ADD PAYMENT
+			
 		default:
 			redirect(0,__ROOT__."/index.php?file=process&process=invalid");
 			exit();
