@@ -23,6 +23,7 @@ else:
 		case 'driver': // DRIVER
 		case 'consumption': // CONSUMPTION
 		case 'personnel': // PERSONNEL
+		case 'payment': // PAYMENT
 			include (str_replace('//','/',dirname(__FILE__).'/') . 'download/'.$download.'.php');
 		break;
 		

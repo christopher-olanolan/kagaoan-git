@@ -36,6 +36,7 @@ else:
 						case 'consumption':
 							
 						case 'transaction':
+						case 'payment':
 						case 'deduction':
 						case 'collection':
 									

@@ -490,8 +490,7 @@ $(document).ready(function() {
 	
 <?
 if ($query_list_count > 0):
-	$total_transaction = 0;
-	$total_cs = 0;
+	$total_payment = 0;
 		
 	for($x=0;$x<$query_list_count;$x++):
 	    // GENERAL INFORMATION
