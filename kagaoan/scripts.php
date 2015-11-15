@@ -235,6 +235,23 @@ else:
 	});
 	
 	jQuery.validator.addMethod("isNumeric", function(value, element) {
+		var strValidChars = "0123456789.-%";
+        var isValid = true;
+        var strChar;
+        var newValue;
+        var strValue = value;
+        
+        for (i=0;i<strValue.length && isValid == true; i++){
+            strChar = strValue.charAt(i);
+            if (strValidChars.indexOf(strChar) == -1) {
+                isValid = false;
+            }
+        }
+        
+	  	return (isValid);
+	});
+
+	jQuery.validator.addMethod("isNumbers", function(value, element) {
 	  	return (parseInt(value));
 	});
 	

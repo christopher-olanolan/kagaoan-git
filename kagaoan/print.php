@@ -35,6 +35,8 @@ else:
 						case 'driver':
 						case 'consumption':
 							
+						case 'shipment':
+						case 'computation':
 						case 'transaction':
 						case 'payment':
 						case 'deduction':
@@ -42,6 +44,7 @@ else:
 									
 						case 'inventory':
 						case 'stock-out':
+						case 'materials':
 							include (str_replace('//','/',dirname(__FILE__).'/') . 'print/'.$print.'.php');	
 						break;
 						default:

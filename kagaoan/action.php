@@ -1437,6 +1437,215 @@ else:
 			exit();
 			break;
 			// EOF ADD PAYMENT
+
+		// ADD MATERIALS
+		case 'add-materials':
+			$created = date("Y-m-d H:i:s");
+			
+			$data = array(
+				'material' => $material,
+				'description' => $description,
+				'gross_weight' => $gross_weight,
+				'volume' => $volume,
+				'active' => 1,
+				'created' => $created
+			);
+			
+			$connect->insert($data, materials);
+			
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+			
+			$data = array(
+					'user_id' => $user_id,
+					'created' => $date,
+					'module' => 'materials',
+					'action' => 'add',
+					'json' => htmlentities($json, ENT_QUOTES)
+			);
+			
+			$connect->insert($data, audit_log);
+			
+			$_SESSION[__SITE__.'_MESSAGE'] = "Material successfully added.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=inventory&section=materials");
+			exit();
+		break;
+		
+		// EDIT MATERIALS
+		case 'edit-materials':
+			$created = date("Y-m-d H:i:s");
+				
+			$data = array(
+				'material' => $material,
+				'description' => $description,
+				'gross_weight' => $gross_weight,
+				'volume' => $volume
+			);
+				
+			$connect->update($data, materials, "id = $id");
+				
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+				
+			$data = array(
+					'user_id' => $user_id,
+					'created' => $date,
+					'module' => 'materials',
+					'action' => 'edit',
+					'json' => htmlentities($json, ENT_QUOTES)
+			);
+				
+			$connect->insert($data, audit_log);
+				
+			$_SESSION[__SITE__.'_MESSAGE'] = "Material successfully updated.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=inventory&section=materials");
+			exit();
+		break;
+		
+		// ADD SHIPMENT
+		case 'add-shipment':
+			$created = date("Y-m-d H:i:s");
+			$invalid = array ("+","=","-"," ",",","/",",");
+			$shipment = str_replace($invalid,'',$shipment);
+			
+			$data = array(
+				'shipment' => $shipment,
+				'driver_id' => $driver_id,
+				'truck_id' => $truck_id,
+				'source' => $source,
+				'destination' => $destination,
+				'shipment_date' => $shipment_date,
+				'rate' => $rate,
+				'active' => 1,
+				'created' => $created
+			);
+				
+			$connect->insert($data, shipment);
+				
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+				
+			$data = array(
+				'user_id' => $user_id,
+				'created' => $date,
+				'module' => 'shipment',
+				'action' => 'add',
+				'json' => htmlentities($json, ENT_QUOTES)
+			);
+				
+			$connect->insert($data, audit_log);
+				
+			$_SESSION[__SITE__.'_MESSAGE'] = "Shipment successfully added.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=shipment");
+			exit();
+		break;
+		
+		// EDIT SHIPMENT
+		case 'edit-shipment':
+			$created = date("Y-m-d H:i:s");
+		
+			$data = array(
+				'shipment' => $shipment,
+				'driver_id' => $driver_id,
+				'truck_id' => $truck_id,
+				'source' => $source,
+				'destination' => $destination,
+				'shipment_date' => $shipment_date,
+				'rate' => $rate,
+			);
+		
+			$connect->update($data, shipment, "id = $id");
+		
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+		
+			$data = array(
+					'user_id' => $user_id,
+					'created' => $date,
+					'module' => 'shipment',
+					'action' => 'edit',
+					'json' => htmlentities($json, ENT_QUOTES)
+			);
+		
+			$connect->insert($data, audit_log);
+		
+			$_SESSION[__SITE__.'_MESSAGE'] = "Shipment successfully updated.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=shipment");
+			exit();
+		break;
+
+		// ADD SHIPMENT ITEM
+		case 'add-computation':
+			$created = date("Y-m-d H:i:s");
+
+			$data = array(
+					'shipment_id' => $shipment_id,
+					'material_id' => $material_id,
+					'case' => $cases,
+					'active' => 1,
+					'created' => $created
+			);
+		
+			$connect->insert($data, computation);
+		
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+		
+			$data = array(
+					'user_id' => $user_id,
+					'created' => $date,
+					'module' => 'computation',
+					'action' => 'add',
+					'json' => htmlentities($json, ENT_QUOTES)
+			);
+		
+			$connect->insert($data, audit_log);
+		
+			$_SESSION[__SITE__.'_MESSAGE'] = "Shipment item successfully added.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=computation&id=".$shipment_id);
+			exit();
+		break;
+		
+		// EDIT SHIPMENT ITEM
+		case 'edit-computation':
+			$created = date("Y-m-d H:i:s");
+		
+			$data = array(
+				'material_id' => $material_id,
+				'case' => $cases
+			);
+		
+			$connect->update($data, computation, "id = $id");
+		
+			$user_id = decryption($_SESSION[__SITE__.'_ENCRYPT_ID']);
+			$date = $created;
+			$json = json_encode($data,true);
+		
+			$data = array(
+				'user_id' => $user_id,
+				'created' => $date,
+				'module' => 'computation',
+				'action' => 'edit',
+				'json' => htmlentities($json, ENT_QUOTES)
+			);
+		
+			$connect->insert($data, audit_log);
+		
+			$_SESSION[__SITE__.'_MESSAGE'] = "Shipment item successfully updated.";
+			$_SESSION[__SITE__.'_MESSAGETYPE'] = "success";
+			redirect(0,__ROOT__."/index.php?file=panel&panel=transaction&section=computation&id=".$shipment_id);
+			exit();
+		break;
 			
 		default:
 			redirect(0,__ROOT__."/index.php?file=process&process=invalid");

@@ -151,6 +151,17 @@ $deductionsortdata = array (
 );
 $deductionsortdatacount = count($deductionsortdata);
 
+$shipmentsortdata = array (
+		array ('value'=>'t1.id','name'=>'Default'),
+		array ('value'=>'t1.shipment','name'=>'Shipment No.'),
+		array ('value'=>'t1.rate','name'=>'Rate'),
+		array ('value'=>'t1.shipment_date','name'=>'Date'),
+		array ('value'=>'t2.plate','name'=>'Plate No.'),
+		array ('value'=>'t3.location','name'=>'Source'),
+		array ('value'=>'t4.location','name'=>'Destination')
+);
+$shipmentsortdatacount = count($shipmentsortdata);
+
 $transactionsortdata = array (
 	array ('value'=>'t1.id','name'=>'Default'),
 	array ('value'=>'t1.soa','name'=>'SOA No.'),
@@ -171,6 +182,14 @@ $paymentsortdata = array (
 );
 $paymentsortdatacount = count($paymentsortdata);
 
+$computationsortdata = array (
+	array ('value'=>'t1.id','name'=>'Default'),
+	array ('value'=>'t3.material','name'=>'Item Code'),
+	array ('value'=>'t3.description','name'=>'Item Description'),
+	array ('value'=>'t1.case','name'=>'Cases Loaded')
+);
+$computationsortdatacount = count($computationsortdata);
+
 $inventorysortdata = array (
 	array ('value'=>'t1.id','name'=>'Default'),
 	array ('value'=>'t1.name','name'=>'Name'),
@@ -180,6 +199,15 @@ $inventorysortdata = array (
 	array ('value'=>'t1.supplier','name'=>'Supplier')
 );
 $inventorysortdatacount = count($inventorysortdata);
+
+$materialsortdata = array (
+		array ('value'=>'t1.id','name'=>'Default'),
+		array ('value'=>'t1.material','name'=>'Material'),
+		array ('value'=>'t1.description','name'=>'Description'),
+		array ('value'=>'t1.gross_weight','name'=>'Gross Weight'),
+		array ('value'=>'t1.volume','name'=>'Volume')
+);
+$materialsortdatacount = count($materialsortdata);
 
 $stockoutsortdata = array (
 	array ('value'=>'t1.id','name'=>'Default'),

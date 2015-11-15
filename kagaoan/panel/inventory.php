@@ -7,7 +7,8 @@ else:
 	switch($section):
 		// TRANSACTION
 		case 'manage':
-		case 'stock-out':	
+		case 'stock-out':
+		case 'materials':
 			$filter  = "";
 			$filter .= $filter_search != '' ? "&filter_search=".$filter_search:"";
 			$filter .= $filter_sort != '' ? "&filter_sort=".$filter_sort:"";

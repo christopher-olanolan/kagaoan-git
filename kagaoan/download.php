@@ -15,10 +15,13 @@ else:
 	
 	switch ($download):
 		case 'collection-statement': // COLLECTION STATEMENT
+		case 'shipment': // SHIPMENT
+		case 'computation': // COMPUTATION
 		case 'transaction': // TRANSACTION
 		case 'deduction': // DEDUCTION
 		case 'stock-out': // STOCK OUT
 		case 'inventory': // INVENTORY
+		case 'materials': // MATERIALS
 		case 'truck': // TRUCK
 		case 'driver': // DRIVER
 		case 'consumption': // CONSUMPTION

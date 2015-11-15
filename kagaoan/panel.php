@@ -137,7 +137,7 @@ else:
 							</div>
 							
 							<div style="width:100%; height:35px; color:#B1732A; border-bottom:1px solid #C1B972; text-align:left; font-variant:small-caps;" class="pt_20 line_24">
-								<?=ucfirst($panel)?> : <?=ucfirst($section)?>
+								<?=ucfirst($panel)?> : <?=$section == "computation" ? "Shipment Computation":ucfirst($section)?>
 							</div>
 							
 							<div class="spacer_15 clean clear"><!-- SPACER --></div>

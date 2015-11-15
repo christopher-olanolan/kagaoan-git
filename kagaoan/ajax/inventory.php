@@ -72,6 +72,13 @@ else:
 			echo $result;
 		break;
 		
+		case 'get-unique-material':
+			$edit = $id == "0" ? "":" AND id != $id";
+			$query = $connect->single_result_array("SELECT id FROM materials WHERE material = '$material' ". $edit);
+			$result = empty($query['id']) || $query['id'] == 'D' || $query['id'] == "" ? "true":"false";
+			echo $result;
+		break;
+		
 		case 'manage': // MANAGE INVETORY
 		case 'add-inventory': // ADD INVENTORY
 		case 'edit-inventory': // EDIT INVENTORY
@@ -84,6 +91,12 @@ else:
 			include (str_replace('//','/',dirname(__FILE__).'/') . 'inventory/'.$control.'.php');	
 		break;
 		
+		case 'materials': // MANAGE MATERIALS
+		case 'add-materials': // ADD MATERIALS
+		case 'edit-materials': // EDIT MATERIALS
+			include (str_replace('//','/',dirname(__FILE__).'/') . 'inventory/'.$control.'.php');
+		break;
+			
 		default:
 			include dirname(__FILE__) . "/error.php";
 		break;

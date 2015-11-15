@@ -126,7 +126,18 @@ else:
 			");
 			exit(json_encode($json));
 		break;
+		case 'shipment': // MANAGE SHIPMENT
+		case 'add-shipment': // ADD SHIPMENT
+		case 'edit-shipment': // EDIT SHIPMENT
+			include (str_replace('//','/',dirname(__FILE__).'/') . 'transaction/'.$control.'.php');
+		break;
 		
+		case 'computation': // MANAGE COMPUTATION
+		case 'add-computation': // ADD COMPUTATION
+		case 'edit-computation': // EDIT COMPUTATION
+			include (str_replace('//','/',dirname(__FILE__).'/') . 'transaction/'.$control.'.php');
+		break;
+			
 		case 'manage': // MANAGE TRANSACTION
 		case 'add-transaction': // ADD TRANSACTION
 		case 'edit-transaction': // EDIT TRANSACTION

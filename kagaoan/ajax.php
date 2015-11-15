@@ -1,6 +1,14 @@
 <?
 if (!defined('__CONTROL__')) die ("You Cannot Access This Script Directly");
 
+?>
+<script type="text/javascript">
+$(document).ready(function() {
+	// Fix popup on ajax load
+	$(".jquerybubblepopup").remove();
+});
+</script>
+<?
 if(!empty($ajax)):
 	if(file_exists(str_replace('//','/',dirname(__FILE__).'/') . 'ajax/'.$ajax.'.php')):
 		switch($ajax):

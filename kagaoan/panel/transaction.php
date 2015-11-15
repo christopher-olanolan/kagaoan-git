@@ -6,11 +6,14 @@ if(empty($_GET['panel']) || empty($_GET['section'])):
 else:
 	switch($section):
 		// TRANSACTION
+		case 'shipment':
+		case 'computation':
 		case 'deduction':
 		case 'manage':
 		case 'payment':
 		case 'report':	
 			$filter  = "";
+			$filter .= $id != '' ? "&id=".$id:"";
 			$filter .= $filter_search != '' ? "&filter_search=".$filter_search:"";
 			$filter .= $filter_sort != '' ? "&filter_sort=".$filter_sort:"";
 			$filter .= $sort_limit != '' ? "&sort_limit=".$sort_limit:"";

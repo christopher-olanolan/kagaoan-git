@@ -1,4 +1,5 @@
 		<?php
+			$data = $connect->single_result_array("SELECT * FROM shipment WHERE id = '{$id}'");
 			$select = new Select();
 			
 			$select_plate =  $select->option_query(
@@ -7,7 +8,7 @@
 				'truck_id', 					// id='$id'
 				'id',							// value='$value'
 				'plate',						// option name
-				'0',							// default selected value
+				$data['truck_id'],							// default selected value
 				'active = "1" ',				// query condition(s)  
 				'id',							// 'order by' field name
 				'ASC',							// sort order 'asc' or 'desc'
@@ -25,8 +26,8 @@
 				'driver_id',	 				// id='$id'
 				'driver_id',					// value='$value'
 				$option_name,					// option name
-				'0',							// default selected value
-				't1.active = "1" ',					// query condition(s)  
+				$data['driver_id'],				// default selected value
+				't1.active = "1" ',				// query condition(s)  
 				'lastname',						// 'order by' field name
 				'ASC',							// sort order 'asc' or 'desc'
 				'selectoption default_select',	// css class
@@ -41,7 +42,7 @@
 				'source', 						// id='$id'
 				'id',							// value='$value'
 				'location',						// option name
-				'0',							// default selected value
+				$data['source'],				// default selected value
 				'active = "1" ',				// query condition(s)  
 				'id',							// 'order by' field name
 				'ASC',							// sort order 'asc' or 'desc'
@@ -56,27 +57,12 @@
 				'destination', 					// id='$id'
 				'id',							// value='$value'
 				'location',						// option name
-				'0',							// default selected value
+				$data['destination'],			// default selected value
 				'active = "1" ',				// query condition(s)  
 				'id',							// 'order by' field name
 				'ASC',							// sort order 'asc' or 'desc'
 				'selectoption default_select',	// css class
 				'Choose destination...',		// default null option name 'Choose option...'	
-				'0'								// select type 1 = multiple or 0 = single
-			);
-			
-			$select_payment =  $select->option_query(
-				'payment_option', 				// table name
-				'paid',	  						// name='$name'
-				'paid', 						// id='$id'
-				'id',							// value='$value'
-				'type_name',					// option name
-				'0',							// default selected value
-				'active = "1" ',				// query condition(s)
-				'id',							// 'order by' field name
-				'ASC',							// sort order 'asc' or 'desc'
-				'selectoption default_select',	// css class
-				'Choose payment...',			// default null option name 'Choose option...'
 				'0'								// select type 1 = multiple or 0 = single
 			);
 		?>
@@ -88,7 +74,7 @@
 				var yyyy = today.getFullYear();
 				var maxdate = yyyy + '-' + mm + '-' + dd;
 				    
-				$("#transaction_date").datepicker({
+				$("#shipment_date").datepicker({
 					alwaysSetTime: false,
 					timepicker: false,
 		    		dateFormat: "yy-mm-dd",
@@ -98,7 +84,7 @@
 		    		showTime: false
 		    	});
 
-				$("#delivered_date").datepicker({
+				$("#shipment_date").datepicker({
 					alwaysSetTime: false,
 					timepicker: false,
 		    		dateFormat: "yy-mm-dd",
@@ -181,31 +167,11 @@
 					$('#destination').val(0);
 					$('#add_location_container').addClass('hidden');
 				}
-
-				$('#delivered').click(function() {
-			    	if ($(this).attr("checked") == 'checked'){
-					    $('#tr_delivered_date').removeClass('hidden');
-					    $('#tr_soa').removeClass('hidden');
-					    $('#tr_urc_doc').removeClass('hidden');
-						
-			    	} else {
-						$('#tr_delivered_date').addClass('hidden');
-						$('#tr_soa').addClass('hidden');
-						$('#tr_urc_doc').addClass('hidden');
-					}
-				});
-
-				$('#paid').change(function() {					
-					if ($(this).val() > 1){
-						$('#tr_payment').removeClass('hidden');
-					} else {
-						$('#tr_payment').addClass('hidden');
-					}
-				});
 			});
 		    </script>
 		    
-        	<form method="post" enctype="multipart/form-data" action="<?=__ROOT__?>/index.php?file=action&action=add-transaction" id="addForm">
+        	<form method="post" enctype="multipart/form-data" action="<?=__ROOT__?>/index.php?file=action&action=edit-shipment" id="editForm">
+        	<input type="hidden" name="id" value="<?=$id?>" />
         	<div style="width:100%;" align="left">
         		<div style="width:100%;" align="left">
                 	<input name="back" id="back" type="button" value="Back" class="back button" />
@@ -214,21 +180,31 @@
                 <div class="spacer_20 clean"><!-- SPACER --></div>
                 
             	<div class="table_title" align="center">
-            		<div align="left" class="px_16 float_left table_title_header">Add Transaction</div>
+            		<div align="left" class="px_16 float_left table_title_header">Add Shipment</div>
 				</div>
             	<table width="100%" border="0" cellpadding="5" cellspacing="0">
             		<tr style="background-color:#D7D7D7;" class="line_20">
-            			<th class="table_solid_bottom darkgray unselectable pad_left_15" align="left">Transaction Details:</th>
+            			<th class="table_solid_bottom darkgray unselectable pad_left_15" align="left">Shipment Details:</th>
             		</tr>
             	</table>
 
                 <table width="100%" border="0" cellpadding="0" cellspacing="5" class="table_solid_bottom table_solid_left table_solid_right radius_bottom_10">
                 	<tr>
-                    	<td width="120" class="pad_left_15">Plate no.: </td>
-                        <td><?=$select_plate?></td>
-                        <td width="420"><label for="truck_id" generated="false" class="error"></label></td>
+                    	<td width="120" class="pad_left_15">Shipment No.: </td>
+                        <td><input id="shipment" name="shipment" type="text" class="inputtext default_inputtext" maxlength="50" value="<?=$data['shipment']?>" /></td>
+                        <td width="420"><label for="shipment" generated="false" class="error"></label></td>
                     </tr>
-                    <tr id="tr_driver_id" class="hidden">
+                    <tr>
+                    	<td class="pad_left_15">Shipment Date: </td>
+                        <td><input id="shipment_date" name="shipment_date" type="text" class="inputtext default_inputtext datepicker" maxlength="50" value="<?=$data['shipment_date']?>" /></td>
+                        <td><label for="shipment_date" generated="false" class="error"></label></td>
+                    </tr>
+                	<tr>
+                    	<td class="pad_left_15">Plate no.: </td>
+                        <td><?=$select_plate?></td>
+                        <td><label for="truck_id" generated="false" class="error"></label></td>
+                    </tr>
+                    <tr id="tr_driver_id">
                     	<td class="pad_left_15">Driver: </td>
                         <td><?=$select_driver?></td>
                         <td><label for="driver_id" generated="false" class="error"></label></td>
@@ -250,52 +226,9 @@
                         <td><?=$select_destination?></td>
                         <td><label for="destination" generated="false" class="error"></label></td>
                     </tr>
-                    
-                    <tr>
-                    	<td class="pad_left_15">Transaction Date: </td>
-                        <td><input id="transaction_date" name="transaction_date" type="text" class="inputtext default_inputtext datepicker" maxlength="50" value="<?=date("Y-m-d")?>" /></td>
-                        <td><label for="transaction_date" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr>
-                    	<td class="pad_left_15 line_30">Delivered: </td>
-                        <td><input type="checkbox" id="delivered" name="delivered" class="checkbox" /></td>
-                        <td><label for="delivered" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr id="tr_delivered_date" class="hidden">
-                    	<td class="pad_left_15">Delivered Date: </td>
-                        <td><input id="delivered_date" name="delivered_date" type="text" class="inputtext default_inputtext datepicker" maxlength="50" value="<?=date("Y-m-d")?>" /></td>
-                        <td><label for="delivered_date" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr>
-                    	<td class="pad_left_15">Payment Option: </td>
-                        <td>
-                        	<?=$select_payment?>
-                        </td>
-                        <td><label for="paid" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr id="tr_payment" class="hidden">
-                    	<td class="pad_left_15">Payment: </td>
-                        <td><input onkeyup="isNumeric($(this));" id="payment" name="payment" type="text" class="inputtext default_inputtext" maxlength="50" value="0.00" /></td>
-                        <td><label for="payment" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr id="tr_soa" class="hidden">
-                    	<td class="pad_left_15">SOA No.: </td>
-                        <td><input id="soa" name="soa" type="text" class="inputtext default_inputtext" maxlength="50" value="" /></td>
-                        <td><label for="soa" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr id="tr_urc_doc" class="hidden">
-                    	<td class="pad_left_15">URC Document: </td>
-                        <td><input id="urc_doc" name="urc_doc" type="text" class="inputtext default_inputtext" maxlength="50" value="" /></td>
-                        <td><label for="urc_doc" generated="false" class="error"></label></td>
-                    </tr>
-                    <tr>
-                    	<td class="pad_left_15">No. of CS: </td>
-                        <td><input id="cs" name="cs" type="text" class="inputtext default_inputtext" maxlength="50" value="" /></td>
-                        <td><label for="cs" generated="false" class="error"></label></td>
-                    </tr>
                     <tr>
                     	<td class="pad_left_15">Rate: </td>
-                        <td><input id="rate" name="rate" type="text" class="inputtext default_inputtext" maxlength="50" value="" /></td>
+                        <td><input id="rate" name="rate" type="text" class="inputtext default_inputtext" maxlength="50" value="<?=$data['rate']?>" /></td>
                         <td><label for="rate" generated="false" class="error"></label></td>
                     </tr>
                 </table>
@@ -305,39 +238,20 @@
                 <div style="width:100%;" align="left">
 	                <input name="back" id="back" type="button" value="Back" class="back button" />
 	                <input name="clear" type="reset" value="Reset Form" class="button" />
-	                <input name="update" type="submit" value="Add Transaction" class="button" />
+	                <input name="update" type="submit" value="Update" class="button" />
                 </div>
             </div>
             </form>
             
             <script type="text/javascript">
             $(document).ready(function() {
-            	$("#addForm").validate({
+            	$("#editForm").validate({
 					rules: {
-						soa: {
-							requiredIfNotEqual: { 
-								notequal: 0, 
-								element: $("#delivered") 
-							}
-						},
-						urc_doc: {
-							requiredIfNotEqual: { 
-								notequal: 0, 
-								element: $("#delivered") 
-							}
-						},
-						transaction_date: {
+						shipment: {
 							required: true
 						},
-						paid : {
-							required: true,
-							notEqual: 0
-						},
-						payment : {
-							requiredIfGreater: { 
-								greaterthan: 1, 
-								element: $("#paid") 
-							}
+						shipment_date: {
+							required: true
 						},
 						source : {
 							required: true,
@@ -355,29 +269,16 @@
 							required: true,
 							notEqual: 0
 						},
-						cs : {
-							required: true
-						},
 						rate : {
 							required: true
 						}
 					},
 					messages: {
-						soa: {
-							requiredIfNotEqual: "Please enter SOA No."
+						shipment: {
+							required: "Please enter shipment no."
 						},
-						urc_doc: {
-							requiredIfNotEqual: "Please enter URC document"
-						},
-						transaction_date: {
+						shipment_date: {
 							required: "Please enter transaction date"
-						},
-						paid : {
-							required: "Please select payment option",
-							notEqual: "Please select payment option"
-						},
-						payment: {
-							requiredIfGreater: "Please enter payment"
 						},
 						source : {
 							required: "Please select source",
@@ -395,12 +296,9 @@
 							required: "Please assign driver",
 							notEqual: "Please assign driver"
 						},
-						cs : {
-							required: "Please enter no. of cs."
-						},
 						rate : {
 							required: "Please enter rate",
-							isNumeric: "Please enter numeric input."
+							isNumeric: true
 						}
 					},
 					onkeyup: false,
@@ -409,14 +307,10 @@
 				
 				$('input[type="reset"]').click(function(){
 			        clearForm(this.form);
-
-			        $('#tr_delivered_date').addClass('hidden');
-					$('#tr_soa').addClass('hidden');
-					$('#tr_urc_doc').addClass('hidden');
 			    });
 			    
 			    $('.back').click(function(){
-			        ajaxLoad("<?=__ROOT__?>/index.php?file=<?=$file?>&ajax=<?=$ajax?>&control=manage","GET");
+			        ajaxLoad("<?=__ROOT__?>/index.php?file=<?=$file?>&ajax=<?=$ajax?>&control=shipment","GET");
 			    });
 			});
             </script>

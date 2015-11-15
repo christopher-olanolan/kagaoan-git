@@ -49,7 +49,7 @@ else:
             </div>
             <div id="truck" class="tab_content <?=$panel=='truck'?'block':'hidden'?>">
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=truck&section=manage" class="sub-menu <?=$panel=='truck' && $section=='manage'?'active':''?>">Management</a>
-            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=truck&section=driver" class="sub-menu <?=$panel=='driver' && $section=='driver'?'active':''?>">Driver Management</a>
+            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=truck&section=driver" class="sub-menu <?=$panel=='truck' && $section=='driver'?'active':''?>">Driver Management</a>
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=truck&section=consumption" class="sub-menu <?=$panel=='truck' && $section=='consumption'?'active':''?>">Diesel Consumption</a>
             	<? /* 
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=truck&section=transaction" class="sub-menu <?=$panel=='truck' && $section=='transaction'?'active':''?>">New Transaction</a>
@@ -58,18 +58,20 @@ else:
             </div>
             <div id="transaction" class="tab_content <?=$panel=='transaction'?'block':'hidden'?>">
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=manage" class="sub-menu <?=$panel=='transaction' && $section=='manage'?'active':''?>">Management</a>
-            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=payment" class="sub-menu <?=$panel=='payment' && $section=='payment'?'active':''?>">Payment</a>
+            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=payment" class="sub-menu <?=$panel=='transaction' && $section=='payment'?'active':''?>">Payment</a>
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=deduction" class="sub-menu <?=$panel=='transaction' && $section=='deduction'?'active':''?>">Deduction</a>
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=report" class="sub-menu <?=$panel=='transaction' && $section=='report'?'active':''?>">Trucker Collection Statement</a>
+            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=transaction&section=shipment" class="sub-menu <?=$panel=='transaction' && ($section=='shipment' || $section == 'computation') ?'active':''?>">Shipment</a>
             </div>
             <div id="inventory" class="tab_content <?=$panel=='inventory'?'block':'hidden'?>">
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=inventory&section=manage" class="sub-menu <?=$panel=='inventory' && $section=='manage'?'active':''?>">Management</a>
                 <a href="<?=__ROOT__?>/index.php?file=panel&panel=inventory&section=stock-out" class="sub-menu <?=$panel=='inventory' && $section=='stock-out'?'active':''?>">Stock Out</a>
+                <a href="<?=__ROOT__?>/index.php?file=panel&panel=inventory&section=materials" class="sub-menu <?=$panel=='inventory' && $section=='materials'?'active':''?>">Materials</a>
             	<? /* <a href="<?=__ROOT__?>/index.php?file=panel&panel=inventory&section=report" class="sub-menu <?=$panel=='inventory' && $section=='report'?'active':''?>">Report</a> */ ?>
             </div>
             <div id="settings" class="tab_content <?=$panel=='settings'?'block':'hidden'?>">
             	<a href="<?=__ROOT__?>/index.php?file=panel&panel=settings&section=manage" class="sub-menu <?=$panel=='settings' && $section=='manage'?'active':''?>">Settings</a>
-            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=settings&section=deduction" class="sub-menu <?=$panel=='deduction' && $section=='deduction'?'active':''?>">Deduction Settings</a>
+            	<a href="<?=__ROOT__?>/index.php?file=panel&panel=settings&section=deduction" class="sub-menu <?=$panel=='settings' && $section=='deduction'?'active':''?>">Deduction Settings</a>
             </div>
             <? /* 
             <div id="report" class="tab_content <?=$panel=='report'?'block':'hidden'?>">
